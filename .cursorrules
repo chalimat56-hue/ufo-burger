@@ -1,0 +1,123 @@
+# Cursor Rules — Next.js + Tailwind + shadcn/ui
+
+## 0. General Principle
+When modifying or adding code in this project:
+- Always follow the rules below, even if existing code doesn't comply.
+- Goal: Write professional, clean, maintainable, consistent code that's easy to evolve.
+- Readability matters, but we don't "simplify at any cost": we choose the best engineering solution like an experienced developer.
+- UI Stack: Tailwind CSS for styles + shadcn/ui for components. No other competing UI kits without explicit reason.
+- All comments in the project should be in English.
+
+## 1. Comments (ABSOLUTE PRIORITY)
+
+### 1.1. Header Comment in Every .tsx File
+Every .tsx file must start with a multi-line comment at line 0:
+```
+/*
+ Explain in simple words:
+ 1) What this file is for.
+ 2) What the user sees on screen.
+ 3) What actions the user can perform on this page/section.
+*/
+```
+- Write in natural, simple language without technical jargon.
+- Forbidden words: "hook", "state", "props", "context", "render", etc.
+- A non-developer reading only this header comment should understand what part of the site this is.
+
+### 1.2. Comments Above Important Elements
+Every important element must have a comment directly above it:
+1. Variables/data objects describing page content (card lists, button texts, form config, etc.)
+2. Page load logic (initial data prep, startup calculations, server calls, etc.)
+3. Functions triggered by users: click, form submit, tab switch, filter, sort, etc.
+4. Major UI sections: lists, galleries, forms, modals, hero, large sections ("About", "Pricing", etc.)
+
+How to write:
+- Explain WHY it's here and what the user sees/experiences
+- Don't describe internal details; describe behavior from user's perspective
+
+### 1.3. Comments Must Stay Current
+- If you change behavior, immediately update the comment.
+- Forbidden: outdated comments, empty comments, long technical explanations.
+- If a comment is no longer useful or becomes incorrect, delete it rather than leave an error.
+
+## 2. File Structure and Components Folder
+
+### 2.1. Components Folder is Mandatory
+- Project must have a `components/` folder.
+- With shadcn/ui, use this structure:
+  - `components/ui/` → shadcn/ui design system components
+  - `components/` (except ui/) → reusable business components (Header, Footer, shared sections)
+
+### 2.2. Only Reusable Components (Strict)
+- Create components in `components/` only for blocks used on multiple pages.
+- Forbidden: creating a business component for single use.
+- Exception (shadcn/ui): shadcn components live in `components/ui/` even if used once (it's the project's local UI library).
+- For repeating UI within one page: use data + `.map()` instead of copy-paste, but don't extract to business component if not needed elsewhere.
+
+### 2.3. Page Files (app/ or pages/)
+- Page files should be clear and structured
+- They assemble reusable components from `components/`
+- What's unique to the page stays inside the page
+- Goal: professional result with tidy structure, logical sections, clear names
+
+### 2.4. UI Rules: Tailwind + shadcn/ui
+1. Styles: Use Tailwind via className (no random CSS)
+2. Components: If task matches shadcn/ui (Button, Input, Dialog, etc.), use it instead of custom
+3. Consistency: Use variants/sizes (e.g., variant, size) instead of miscellaneous styles
+4. Accessibility: Interactive elements must work with keyboard, have correct labels/aria, visible focus
+5. Forbidden: Adding another UI kit (MUI, Ant, Chakra, etc.) without explicit request
+
+## 3. Strictly Forbidden (Entire Project)
+
+### 3.1. No HOCs (Higher-Order Components)
+Forbidden:
+```js
+const withSomething = (Component) => { ... }
+```
+Instead: regular, understandable components.
+
+### 3.2. No Render Props
+Forbidden:
+```jsx
+<SomeComponent renderContent={(item) => ( ... )} />
+```
+Instead: classic structure.
+
+### 3.3. No Custom Hooks (Our Own)
+Forbidden:
+```js
+function useSomething() { ... }
+```
+Allowed: standard React hooks, hooks from known libraries if justified.
+
+## 4. Code Quality (Senior Level)
+- Write code like a senior developer: clean conventions, logical separation, clear names
+- Components extracted correctly (only for reuse, except components/ui/)
+- Accessibility and best practices
+- Consistent structure across project
+- Don't "artificially simplify": choose the best technical solution for reliability and maintainability
+- No "hacks": no commented-out code "just in case", no unnecessary duplication, no complexity without reason
+
+## 5. Design Rules for UFO Burgers
+
+### 5.1. Cinematic, Not Cartoon
+- No bounce animations, no jumping effects
+- No bright neon colors
+- Animations: slow + ease-in-out (0.6s - 1s duration)
+- Glow only as light reflection, not "game UI"
+- Everything should feel like a movie scene, not a video game
+
+### 5.2. Spotlight Effect
+- Light color: warm white with slight yellow tint (not cyan, not bright yellow)
+- Soft edges, brighter inside, quickly fading outside
+- Hotspot at bottom where active burger sits
+- Very subtle dust/particle effect for cinematic feel
+
+### 5.3. Burger Carousel
+- Active burger always centered under spotlight
+- Conveyor/carousel movement (horizontal slide, not rotation)
+- Active burger: brighter, sharper, slightly larger, warm glow
+- Inactive burgers: darker, softer/blurred, smaller
+- Smooth transitions between selections
+
+
