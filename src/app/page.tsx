@@ -41,14 +41,14 @@ export default function Home() {
   const [showInfo, setShowInfo] = useState(false);
 
   /* Dynamic spacing for mobile responsiveness */
-  const [burgerSpacing, setBurgerSpacing] = useState(160);
+  const [burgerSpacing, setBurgerSpacing] = useState(480);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
-        setBurgerSpacing(130);
+        setBurgerSpacing(390);
       } else {
-        setBurgerSpacing(160);
+        setBurgerSpacing(480);
       }
     };
     

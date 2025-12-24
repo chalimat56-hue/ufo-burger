@@ -677,8 +677,8 @@ body {
   justify-content: flex-start;
   gap: 0; /* Gap auf 0, wir regeln das über die Breite der Items */
   transition: transform 0.7s var(--ease-cinematic);
-  /* Zentrum-Korrektur: 50vw minus halbe Item-Breite (160px / 2 = 80px) */
-  padding-left: calc(50vw - 80px);
+  /* Zentrum-Korrektur: 50vw minus halbe Item-Breite (480px / 2 = 240px) */
+  padding-left: calc(50vw - 240px);
 }
 
 .carousel-nav {
@@ -735,13 +735,13 @@ body {
   background: none;
   border: none;
   padding: 10px;
-  width: 160px; /* Feste Breite für perfekte Berechnung */
+  width: 480px; /* Von 160px auf 480px verdreifacht */
 }
 
 .burger-image-wrapper {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 240px;  /* Von 80px auf 240px verdreifacht */
+  height: 240px; /* Von 80px auf 240px verdreifacht */
   border-radius: 50%;
   overflow: visible;
   transition: all 0.6s var(--ease-cinematic);
@@ -753,8 +753,8 @@ body {
 
 @media (min-width: 768px) {
   .burger-image-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 300px;  /* Von 100px auf 300px verdreifacht */
+    height: 300px; /* Von 100px auf 300px verdreifacht */
   }
 }
 
@@ -782,8 +782,8 @@ body {
 
 /* Active burger styling */
 .burger-active .burger-image-wrapper {
-  width: 130px;
-  height: 130px;
+  width: 390px;  /* Von 130px auf 390px verdreifacht */
+  height: 390px; /* Von 130px auf 390px verdreifacht */
 }
 
 .burger-active .burger-image-wrapper img {
@@ -802,8 +802,8 @@ body {
 
 @media (min-width: 768px) {
   .burger-active .burger-image-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 450px;  /* Von 150px auf 450px verdreifacht */
+    height: 450px; /* Von 150px auf 450px verdreifacht */
   }
 }
 
@@ -1179,12 +1179,12 @@ body {
   }
 
   .burger-item {
-    width: 130px; /* Schmaler auf Mobile */
+    width: 390px; /* Von 130px auf 390px verdreifacht */
   }
 
   .carousel-track {
-    /* Zentrierung für die schmaleren Mobile-Items (130px / 2 = 65px) */
-    padding-left: calc(50vw - 65px);
+    /* Zentrierung für die schmaleren Mobile-Items (390px / 2 = 195px) */
+    padding-left: calc(50vw - 195px);
   }
 
   .info-card {
